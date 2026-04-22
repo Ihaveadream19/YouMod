@@ -288,13 +288,6 @@
 @property (atomic, copy, readwrite) NSAttributedString *attributedText;
 @end
 
-@interface _ASDisplayView : UIView
-@property (nonatomic, strong, readwrite) ASDisplayNode *keepalive_node;
-- (void)postManager:(UILongPressGestureRecognizer *)sender;
-- (void)savePFP:(UILongPressGestureRecognizer *)sender;
-- (void)commentManager:(UILongPressGestureRecognizer *)sender;
-@end
-
 @interface YTLabel : UILabel
 - (void)setFontAttributes:(id)attributes text:(NSString *)text;
 @end
