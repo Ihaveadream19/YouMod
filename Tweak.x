@@ -649,7 +649,7 @@ BOOL isTabSelected = NO;
 %end
 */
 
-/*
+
 // Thanks to aricloverEXTRA for all of these logics!
 // YTHidePlayerButtons 1.0.0 - made by @aricloverEXTRA
 static NSDictionary<NSString *, NSString *> *HideToggleMap(void) {
@@ -657,6 +657,7 @@ static NSDictionary<NSString *, NSString *> *HideToggleMap(void) {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         map = @{
+            /*
             // identifiers
             @"id.video.share.button": @"hideShareButton_enabled", // Share button
             @"id.ui.add_to.offline.button": @"hideDownloadButton_enabled",
@@ -684,6 +685,9 @@ static NSDictionary<NSString *, NSString *> *HideToggleMap(void) {
             id.reel_remix_button
             id.reel_pivot_button Sound metadate in shorts
             id.ui.video_metadata_carousel -> Preview comments in full video
+            */
+            @"horizontal-video-shelf.eml": @"HideHoriShelf",
+            @"feed_nudge.view": @"HideGenMusicShelf",
         };
     });
     return map;
@@ -833,4 +837,3 @@ static void hideButtonsInActionBarIfNeeded(id collectionView) {
     });
 }
 %end
-*/
