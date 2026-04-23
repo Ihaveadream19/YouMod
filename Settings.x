@@ -268,8 +268,8 @@ NSBundle *YouModBundle() {
     [sectionItems addObject:hidesubbar];
 
     // Hide Horizonal Shelf
-    YTSettingsSectionItem *hidehorishelf = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_HORIZONAL_SHELF")
-        titleDescription:LOC(@"HIDE_HORIZONAL_SHELF_DESC")
+    YTSettingsSectionItem *hidehorishelf = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_HORIZONTAL_SHELF")
+        titleDescription:LOC(@"HIDE_HORIZONTAL_SHELF_DESC")
         accessibilityIdentifier:nil
         switchOn:IS_ENABLED(HideHoriShelf)
         switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
