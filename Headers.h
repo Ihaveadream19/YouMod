@@ -23,6 +23,7 @@
 #import <YouTubeHeader/ASCollectionView.h>
 #import <YouTubeHeader/ELMNodeController.h>
 #import <YouTubeHeader/YTMainAppControlsOverlayView.h>
+#import <YouTubeHeader/YTMainAppVideoPlayerOverlayView.h>
 
 #define IS_ENABLED(k) [[NSUserDefaults standardUserDefaults] boolForKey:k]
 #define YTPremiumLogo @"YouModYTPremiumLogo"
@@ -152,10 +153,6 @@
 @property (nonatomic, weak, readwrite) YTScrollableNavigationController *navigationController;
 @end
 
-@interface YTMainAppControlsOverlayView : UIView
-@property (nonatomic, strong, readwrite) YTPlayerViewController *playerViewController;
-@end
-
 @interface YTReelWatchRootViewController : UIViewController
 @property (nonatomic, weak, readwrite) YTScrollableNavigationController *navigationController;
 @end
@@ -168,10 +165,6 @@
 - (void)turnShortsOnlyModeOff:(UILongPressGestureRecognizer *)gesture;
 @end
 
-@interface YTPivotBarViewController ()
-@property (nonatomic, weak, readwrite) YTShortsPlayerViewController *scrubberDelegate;
-@end
-
 @interface YTEngagementPanelIdentifier : NSObject
 @property (nonatomic, copy, readonly) NSString *identifierString;
 @end
@@ -181,7 +174,6 @@
 @end
 
 @interface YTEngagementPanelContainerController : UIViewController
-@property (nonatomic, weak, readwrite) YTWatchViewController *parentViewController;
 @end
 
 @interface YTEngagementPanelNavigationController : UIViewController
@@ -233,22 +225,6 @@
 @property (atomic, assign, readonly) ASNodeAncestryEnumerator *supernodes;
 // @property (atomic, copy, readwrite) NSArray *yogaChildren;
 @property (atomic) CALayer *layer;
-@end
-
-
-@interface YTMainAppVideoPlayerOverlayView : UIView
-@property (nonatomic, assign, readonly) YTInlinePlayerScrubUserEducationView *scrubUserEducationView;
-@property (nonatomic, strong, readwrite) YTInlinePlayerBarContainerView *playerBar;
-@property (nonatomic, weak, readwrite) YTMainAppVideoPlayerOverlayViewController *delegate;
-- (void)speedmasterYtLite:(UILongPressGestureRecognizer *)sender;
-@end
-
-@interface YTMainAppVideoPlayerOverlayViewController ()
-@property (nonatomic, assign, readonly) YTMainAppVideoPlayerOverlayView * videoPlayerOverlayView;
-@property (readonly, nonatomic) CGFloat mediaTime;
-@property (readonly, nonatomic) NSString *videoID;
-- (void)setPlaybackRate:(CGFloat)rate;
-- (CGFloat)currentPlaybackRate;
 @end
 
 @interface YTFormattedStringLabel : UILabel
