@@ -1,6 +1,37 @@
 // All Codes are adapt from YTLite and uYouEnhanced + Some of my research
 #import "Headers.h"
 
+// _ASDisplayView filters
+// This hook can hide A LOT of things
+%hook _ASDisplayView
+
+- (void)didMoveToWindow {
+    %orig;
+    if (IS_ENABLED(HideGenMusicShelf) && [self.accessibilityIdentifier isEqualToString:@"feed_nudge.view"]) self.hidden = YES;
+    if (IS_ENABLED(HideLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.like.button"]) self.hidden = YES;
+    if (IS_ENABLED(HideDisLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.dislike.button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShareButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.share.button"]) self.hidden = YES;
+    if (IS_ENABLED(HideDownloadButton) && [self.accessibilityIdentifier isEqualToString:@"id.ui.add_to.offline.button"]) self.hidden = YES;
+    if (IS_ENABLED(HideClipButton) && [self.accessibilityIdentifier isEqualToString:@"clip_button.eml"]) self.hidden = YES;
+    if (IS_ENABLED(HideRemixButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.remix.button"]) self.hidden = YES;
+    if (IS_ENABLED(HideSaveButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.add_to.button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_like_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsDisLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_dislike_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsCommentButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_comment_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsShareButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_share_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsRemixButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_remix_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsMetaButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_pivot_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsProducts) && [self.accessibilityIdentifier isEqualToString:@"product_sticker.main_target"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsProducts) && [self.accessibilityIdentifier isEqualToString:@"product_sticker.secondary_target"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsRecbar) && [self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action.button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsCommit) && [self.accessibilityIdentifier isEqualToString:@"eml.shorts-disclosures"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsSubscriptButton) && [self.accessibilityIdentifier isEqualToString:@"id.ui.shorts_paused_state.subscriptions_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsLiveButton) && [self.accessibilityIdentifier isEqualToString:@"id.ui.shorts_paused_state.live_button"]) self.hidden = YES;
+    if (IS_ENABLED(HideShortsToVideo) && [self.accessibilityIdentifier isEqualToString:@"id.reel_multi_format_link"]) self.hidden = YES;
+}
+
+%end
+
 // Navigation Bar
 
 // YouTube Premium logo
@@ -90,15 +121,6 @@
         [self removeFromSuperview];
     } %orig;
 }
-%end
-
-%hook _ASDisplayView
-
-- (void)didMoveToWindow {
-    %orig;
-    if (IS_ENABLED(HideGenMusicShelf) && [self.accessibilityIdentifier isEqualToString:@"feed_nudge.view"]) self.hidden = YES;
-}
-
 %end
 
 %hook YTIElementRenderer
@@ -243,43 +265,7 @@
 - (void)setRelatedVideosView:(id)arg { if (!IS_ENABLED(HideRelateVideo)) %orig; }
 %end
 
-%hook _ASDisplayView
-
-- (void)didMoveToWindow {
-    %orig;
-    if (IS_ENABLED(HideLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.like.button"]) self.hidden = YES;
-    if (IS_ENABLED(HideDisLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.dislike.button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShareButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.share.button"]) self.hidden = YES;
-    if (IS_ENABLED(HideDownloadButton) && [self.accessibilityIdentifier isEqualToString:@"id.ui.add_to.offline.button"]) self.hidden = YES;
-    if (IS_ENABLED(HideClipButton) && [self.accessibilityIdentifier isEqualToString:@"clip_button.eml"]) self.hidden = YES;
-    if (IS_ENABLED(HideRemixButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.remix.button"]) self.hidden = YES;
-    if (IS_ENABLED(HideSaveButton) && [self.accessibilityIdentifier isEqualToString:@"id.video.add_to.button"]) self.hidden = YES;
-}
-
-%end
-
 // Shorts
-
-%hook _ASDisplayView
-
-- (void)didMoveToWindow {
-    %orig;
-    if (IS_ENABLED(HideShortsLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_like_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsDisLikeButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_dislike_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsCommentButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_comment_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsShareButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_share_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsRemixButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_remix_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsMetaButton) && [self.accessibilityIdentifier isEqualToString:@"id.reel_pivot_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsProducts) && [self.accessibilityIdentifier isEqualToString:@"product_sticker.main_target"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsProducts) && [self.accessibilityIdentifier isEqualToString:@"product_sticker.secondary_target"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsRecbar) && [self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action.button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsCommit) && [self.accessibilityIdentifier isEqualToString:@"eml.shorts-disclosures"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsSubscriptButton) && [self.accessibilityIdentifier isEqualToString:@"id.ui.shorts_paused_state.subscriptions_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsLiveButton) && [self.accessibilityIdentifier isEqualToString:@"id.ui.shorts_paused_state.live_button"]) self.hidden = YES;
-    if (IS_ENABLED(HideShortsToVideo) && [self.accessibilityIdentifier isEqualToString:@"id.reel_multi_format_link"]) self.hidden = YES;
-}
-
-%end
 
 // Enables shorts quality - works best with YTClassicVideoQuality
 %hook YTHotConfig
