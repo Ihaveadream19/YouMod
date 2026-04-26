@@ -98,6 +98,11 @@
                 [defaults removeObjectForKey:key];
             }
         }
+        [defaults setBool:YES forKey:AutoClearCache];
+        [defaults setBool:YES forKey:YTPremiumLogo];
+        [defaults setBool:YES forKey:HideCreateButton];
+        [defaults setBool:YES forKey:HideCastButtonNav];
+        [defaults setBool:YES forKey:HideCastButtonPlayer];
         [defaults synchronize];
         exit(0);
     } actionTitle:LOC(@"YES")];
